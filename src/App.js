@@ -22,51 +22,67 @@ function App() {
     e.preventDefault();
     if (!nombre.trim()) {
       seterror("El Campo Nombre Está Vacío");
-    }
+    }else 
     if (!telefono.trim()) {
       seterror("El Campo Teléfono Está Vacío");
+    }else 
+    if(isNaN(telefono)){
+      seterror("El teléfono debe ser Numérico");
+    }else 
+    if(telefono.length!==10){
+      seterror("El teléfono debe tener 10 dígitos");
     }
-    const usuario = {
-      nombre: nombre,
-      telefono: telefono,
-    };
-    try {
-      const data = await store.collection("agenda").add(usuario);
-      const { docs } = await store.collection("agenda").get();
-      alert("Usuario Añadido");
-      const nuevoArray = docs.map((item) => ({ id: item.id, ...item.data() }));
-      setUsuariosAgenda(nuevoArray);
-    } catch (e) {
-      console.log(e);
+    else{
+      seterror("");
+      const usuario = {
+        nombre: nombre,
+        telefono: telefono,
+      };
+        try {
+          await store.collection("agenda").add(usuario);
+          const { docs } = await store.collection("agenda").get();
+          alert("Usuario Añadido");
+          const nuevoArray = docs.map((item) => ({ id: item.id, ...item.data() }));
+          setUsuariosAgenda(nuevoArray);
+        } catch (e) {
+          console.log(e);
+        }
+        setnombre("");
+        settelefono("");
     }
-    setnombre("");
-    settelefono("");
   };
 
   const setUpdate = async (e) => {
     e.preventDefault();
     if (!nombre.trim()) {
       seterror("El Campo Nombre Está Vacío");
-    }
+    }else 
     if (!telefono.trim()) {
       seterror("El Campo Teléfono Está Vacío");
+    }else 
+    if(isNaN(telefono)){
+      seterror("El teléfono debe ser Numérico");
+    }else 
+    if(telefono.length<10){
+      seterror("El teléfono debe tener 10 dígitos");
+    }else{
+      seterror("");
+      const userupdate = {
+        nombre: nombre,
+        telefono: telefono,
+      };
+      try {
+        await store.collection("agenda").doc(idusuario).set(userupdate);
+        alert("Usuario Actualizado");
+        const { docs } = await store.collection("agenda").get();
+        const nuevoArray = docs.map((item) => ({ id: item.id, ...item.data() }));
+        setUsuariosAgenda(nuevoArray);
+      } catch (e) {
+        console.log(e);
+      }
+      setnombre("");
+      settelefono("");
     }
-    const userupdate = {
-      nombre: nombre,
-      telefono: telefono,
-    };
-    try {
-
-      await store.collection("agenda").doc(idusuario).set(userupdate);
-      alert("Usuario Actualizado");
-      const { docs } = await store.collection("agenda").get();
-      const nuevoArray = docs.map((item) => ({ id: item.id, ...item.data() }));
-      setUsuariosAgenda(nuevoArray);
-    } catch (e) {
-      console.log(e);
-    }
-    setnombre("");
-    settelefono("");
   };
 
   const eliminarUsuario = async (id) => {

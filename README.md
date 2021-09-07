@@ -39,6 +39,18 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+In order to execute the project, you must install the next dependencies:
+
+### `npm install`
+
+## Firebase
+
+### `npm i firebase@^8.10.0`
+
+## Bootstrap
+
+### `npm install bootstrap`
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
