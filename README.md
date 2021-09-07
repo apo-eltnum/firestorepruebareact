@@ -41,15 +41,15 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 In order to execute the project, you must install the next dependencies:
 
-### npm install
+### `npm install`
 
-##Firebase
+## Firebase
 
-### npm i firebase@^8.10.0
+### `npm i firebase@^8.10.0`
 
-##Bootstrap
+## Bootstrap
 
-### npm install bootstrap
+### `npm install bootstrap`
 
 ## Learn More
 
